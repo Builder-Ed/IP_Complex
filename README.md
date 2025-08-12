@@ -1,6 +1,4 @@
 # IP_Complex
-IP_Complex is an implementation targeted at producing portable 
-# IP_Complex
 
 IP_Complex is an implementation targeted at producing portable IP synchronization services written in Java, allowing clients to log their IP on a deployed server with a specific client ID and retrieve recorded ones with the latter.
 
