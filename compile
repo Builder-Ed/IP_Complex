@@ -1,8 +1,8 @@
 #!/bin/bash
 #
 #
-javac -d build/ src/IP_Complex.java src/CPLX_Utils/CPLX_NET.java
+javac -Xlint -d build/ src/IP_Complex.java src/CPLX_Utils/CPLX_NET.java src/CPLX_Utils/CPLX_IO.java
 cd build
-jar cfm build/[Build]IP_Complex.jar /workspaces/IP_Complex/MANIFEST.MF IP_Complex.class CPLX_Utils/CPLX_NET.class
+jar cfm build/[Build]IP_Complex.jar /workspaces/IP_Complex/MANIFEST.MF IP_Complex.class CPLX_Utils/CPLX_NET.class CPLX_Utils/CPLX_IO.class
 
-java -jar build/[Build]IP_Complex.jar
+#java -jar build/[Build]IP_Complex.jar server
