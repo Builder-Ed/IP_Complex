@@ -6,8 +6,8 @@ public class IP_Complex
         System.out.println("Usage: java -jar IP_Complex.jar [OPTION]...");
         System.out.println("\tserver <port>\t\t\tserver mode, listen on <port>");
         System.out.println("\tserver <port> <filepath>\tserver mode, load recorded client and listen on <port>");
-        System.out.println("\tclient <address>\t\tclient mode, connect to <address> on port 8800");
-        System.out.println("\tclient <address> <port>\t\tclient mode, connect to <address> on <port>");
+        System.out.println("\tclient <address> <clientID>\t\tclient mode, connect to <address> on port 8800 using <clientID>");
+        System.out.println("\tclient <address> <port> <clientID>\t\tclient mode, connect to <address> on <port> using <clientID>");
     }
     public static void server(int srcPort,String filename)
     {
@@ -15,14 +15,14 @@ public class IP_Complex
         CPLX_IO   cplx_io  = new CPLX_IO();
         if(filename != null) {cplx_io.CPLX_Load_File(filename);}
         else{ filename = "clients.log"; }
-        if(srcPort == 0) { cplx_net.CPLX_Start_Listening_TCP(8800,filename); }
-        else { cplx_net.CPLX_Start_Listening_TCP(srcPort,filename); }
+        if(srcPort == 0) { cplx_net.CPLX_Start_Listening_TCP(8800,filename,cplx_io); }
+        else { cplx_net.CPLX_Start_Listening_TCP(srcPort,filename,cplx_io); }
     }
 
-    public static void client(String targetAddr, int targetPort)
+    public static void client(String targetAddr, int targetPort, String clientID)
     {
         CPLX_NET  cplx_net  = new CPLX_NET();
-        cplx_net.CPLX_Establish_TCP_Connection(targetAddr, targetPort);
+        cplx_net.CPLX_Establish_TCP_Connection(targetAddr, targetPort, clientID);
     }
     public static void main(String[] args) throws Exception {
 
@@ -44,11 +44,11 @@ public class IP_Complex
         }
         else if("client".equals(args[0].toLowerCase())) 
         {
-            if(args.length < 2) { return; }
-            String targetAddr = args[1];
-            if(args.length < 3){client(targetAddr,8800);}
+            if(args.length < 3) { print_usage(); return; }
+            String targetAddr = args[1]; 
+            if(args.length < 4){ client(targetAddr, 8800, args[2]); return;}
             int targetPort;
-            try{ targetPort = Integer.parseInt(args[2]); client(targetAddr, targetPort); return;}
+            try{ targetPort = Integer.parseInt(args[2]); client(targetAddr, targetPort, args[3]); return;}
             catch(NumberFormatException e)
             {
                 System.out.print("[IP_Complex]Invalid parameter for client:\t");

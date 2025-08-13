@@ -7,7 +7,7 @@ public class CPLX_IO
     File file;
     Scanner scanner;
     public Vector<String> ClientVec = new Vector<String>(32,32);
-    public void CPLX_Load_File(String filename)
+    public Vector<String> CPLX_Load_File(String filename)
     {
         try
         {
@@ -20,6 +20,7 @@ public class CPLX_IO
             ClientVec.addElement(IOBuffer.substring(IOBuffer.indexOf("/")+1,IOBuffer.length()));
         }
         scanner.close();
+        return ClientVec;
         }
         catch(IOException e)
         {
@@ -27,6 +28,7 @@ public class CPLX_IO
             System.out.println(filename);
             System.out.print("\t`");
             System.err.println(e);
+            return null;
         }
     }
     public void CPLX_Update_File(String filename)
@@ -38,7 +40,7 @@ public class CPLX_IO
             for(int n = 0; n < ClientVec.size() / 2; n++)
             {
                 raf.write(ClientVec.get(n * 2).getBytes());
-                raf.write(("/").getBytes());
+                //raf.write(("/").getBytes());
                 raf.write(ClientVec.get(n * 2 + 1).getBytes());
                 raf.write(("\n").getBytes());
             }
@@ -62,6 +64,7 @@ public class CPLX_IO
         }
         ClientVec.addElement(clientID);
         ClientVec.addElement(clientAddr);
+        System.out.println(ClientVec);
     }
 
     public String CPLX_Check_Client(String clientID)
