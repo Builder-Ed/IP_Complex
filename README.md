@@ -19,7 +19,33 @@ To build the project, you may use the compile file enclosed, which will compile 
 To do so, just simply execute:
 
 ```
-
 ./compile
+```
+## Usage
+
+### Server
+To start up a server, you may run:
 
 ```
+java -jar IP_Complex.jar server <port>
+```
+
+If you have already a log which contains IPs of clients, you may also add the directory of the file to load them to the server using:
+
+```
+java -jar IP_Complex.jar server <port> <filepath>
+```
+### Client
+To connect to the server, you have to choose a clientID to send to the server, which you will use to fetch IPs under the same clientID.
+
+To do so, you may run
+```
+java -jar IP_Complex.jar client <address> <clientID>
+```
+or
+```
+java -jar IP_Complex.jar client <address> <port> <clientID>
+```
+
+
+
