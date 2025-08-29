@@ -4,8 +4,13 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.0.1",
     "configurations": [
-        
-
+        {
+            "type": "java",
+            "name": "IP_Complex",
+            "request": "launch",
+            "mainClass": "IP_Complex",
+            "projectName": "IP_Complex_c8162ecf"
+        },
         {
             "type": "jdk",
             "request": "launch",
