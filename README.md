@@ -36,16 +36,23 @@ If you have already a log which contains IPs of clients, you may also add the di
 java -jar IP_Complex.jar server <port> <filepath>
 ```
 ### Client
-To connect to the server, you have to choose a clientID to send to the server, which you will use to fetch IPs under the same clientID.
+To connect to the server, you have to choose a clientID to inform to the server, which you will use to fetch/append/delete IPs under the same clientID.
+There are three valid options you may choose on the client side, fetch/append/delete.
+Say now we want to add an IP to the server listening a specific port, we can do:
 
-To do so, you may run
 ```
-java -jar IP_Complex.jar client <address> <clientID>
+java -jar IP_Complex.jar client append <address> <port> <clientID> <IP>
 ```
-or
+You may also replace IP with "CURRENT" to specify the current IP.
+
+For a clientID, multiple IPs can be added.
+To fetch the IP(s) we have appended, we can run
 ```
-java -jar IP_Complex.jar client <address> <port> <clientID>
+java -jar IP_Complex.jar client fetch <address> <port> <clientID>
 ```
+This should list all IPs appended under this clientID.
+
+Deleting accounts is similar to appending, replace the "append" parameter with "delete" should do the job.
 
 
 
