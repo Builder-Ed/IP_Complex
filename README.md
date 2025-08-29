@@ -37,6 +37,7 @@ java -jar IP_Complex.jar server <port> <filepath>
 ```
 ### Client
 To connect to the server, you have to choose a clientID to inform to the server, which you will use to fetch/append/delete IPs under the same clientID.
+
 There are three valid options you may choose on the client side, fetch/append/delete.
 Say now we want to add an IP to the server listening a specific port, we can do:
 
